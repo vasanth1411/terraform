@@ -85,7 +85,7 @@ resource "aws_security_group" "vasanth-test" {
   description = "Used in the terraform"
   vpc_id      = "${aws_vpc.vasanth-test.id}"
 
-  # SSH access from anywhere
+  # SSH access from anywhere, terraform was created from local machine and on entire new AWS account
   ingress {
     from_port   = 22
     to_port     = 22
