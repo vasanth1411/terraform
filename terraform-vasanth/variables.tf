@@ -29,6 +29,7 @@ variable "use_num_suffix" {
   default     = false
 }
 
+
 # CentOs Images
 variable "aws_amis" {
   default = {

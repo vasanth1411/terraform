@@ -1,3 +1,7 @@
+terraform {
+  required_version = ">= 0.12"
+}
+
 # Specify the provider and access details
 provider "aws" {
   region = "${var.aws_region}"
@@ -54,7 +58,7 @@ resource "aws_security_group" "elb" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["122.180.159.134/32"]
   }
 
   # HTTP access from anywhere
@@ -62,7 +66,7 @@ resource "aws_security_group" "elb" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["122.180.159.134/32"]
   }
 
   # outbound internet access
@@ -90,7 +94,7 @@ resource "aws_security_group" "vasanth-test" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["122.180.159.134/32"]
   }
 
   # HTTP access from the VPC
@@ -135,7 +139,7 @@ resource "aws_instance" "webserver" {
   key_name = "${aws_key_pair.auth.id}"
   vpc_security_group_ids = ["${aws_security_group.vasanth-test.id}"]
   subnet_id = "${aws_subnet.vasanth-test.id}"
-  tags = merge(
+   tags = merge(
   {
     "Name" = var.instance_count > 1 || var.use_num_suffix ? format("%s-%d", var.name, count.index + 1) : var.name
   },
