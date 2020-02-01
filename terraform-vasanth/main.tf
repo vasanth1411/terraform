@@ -162,7 +162,6 @@ resource "aws_instance" "webserver" {
 
 resource "aws_elb" "webserver" {
   name =  "webserverelb"
-#  count = var.instance_count
   subnets         = ["${aws_subnet.vasanth-test.id}"]
   security_groups = ["${aws_security_group.elb.id}"]
   instances       = "${aws_instance.webserver.*.id}"
@@ -173,6 +172,7 @@ resource "aws_elb" "webserver" {
     lb_port           = 80
     lb_protocol       = "http"
   }  
+# Commenting due to free cert generation on certificate Manager
 #  listener {
 #    instance_port     = 443
 #    instance_protocol = "https"
