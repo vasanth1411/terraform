@@ -36,7 +36,7 @@ Services created using Terraform are:
 > will be added automatically to the ELB created.
 > eg. <http://webserverelb-2067134482.us-west-1.elb.amazonaws.com/>
 
-> :warning: **Output:**
+> :warning: **Input:**
 > All these inputs are preassigned using .tfvars as input variables.
 
 <!-- BEGINNING OF TERRAFORM DOCS HOOK -->
