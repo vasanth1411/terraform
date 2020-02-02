@@ -169,8 +169,6 @@ resource "aws_instance" "webserver" {
 
 resource "aws_elb" "webserver" {
   name =  "webserver-elb"
-#  count                   = var.subnet_count
-#  subnets         = ["${aws_subnet.vasanth-test.*.id[count.index]}"]
   subnets         = "${aws_subnet.vasanth-test.*.id}"
   security_groups = ["${aws_security_group.elb.id}"]
   instances       = "${aws_instance.webserver.*.id}"
